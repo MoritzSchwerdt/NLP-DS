@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$defs": {
+    "conversation_id_integer": {
+      "type": "object",
+      "properties": {
+        "conversation_id": { "type": "string" },
+        "size": { "type": "integer" }
+      },
+      "additionalProperties": false,
+      "required": [ "conversation_id", "size" ]
+    },
+    "tweet_id_integer": {
+      "type": "object",
+      "properties": {
+        "tweet_id": { "type": "string" },
+        "value": { "type": "integer" }
+      },
+      "additionalProperties": false,
+      "required": [ "tweet_id", "value" ]
+    },
+    "tweet_id_number": {
+      "type": "object",
+      "properties": {
+        "tweet_id": { "type": "string" },
+        "value": { "type": "number" }
+      },
+      "additionalProperties": false,
+      "required": [ "tweet_id", "value" ]
+    }
+  },
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "hashtag": {
+          "type": "string"
+        },
+        "biggest_conversations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/conversation_id_integer" }
+        },
+        "biggest_cascade_depth": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tweet_id_integer" }
+        },
+        "biggest_cascade_size": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tweet_id_integer" }
+        },
+        "biggest_cascade_breadth": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tweet_id_integer" }
+        },
+        "biggest_cascade_virality": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tweet_id_number" }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "hashtag",
+        "biggest_conversations",
+        "biggest_cascade_depth",
+        "biggest_cascade_size",
+        "biggest_cascade_breadth",
+        "biggest_cascade_virality"
+      ]
+    }
+  ]
+}
